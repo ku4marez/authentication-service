@@ -4,7 +4,7 @@ services:
     image: mongo:5.0
     container_name: authentication-service-mongodb
     ports:
-      - "27018:27018" # Expose MongoDB on localhost
+      - "27018:27017" # Expose MongoDB on localhost
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: password
