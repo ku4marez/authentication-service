@@ -17,6 +17,13 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      # Clone common-libraries repository
+      - name: Clone common-libraries repository
+        run: |
+          git clone https://github.com/ku4marez/common-libraries.git
+          cd common-libraries
+          mvn clean install
+
       # Install Docker Compose as a CLI plugin
       - name: Install Docker Compose Plugin
         run: |
