@@ -17,6 +17,20 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      # Configure Maven for GitHub Packages
+      - name: Configure Maven Settings
+        run: |
+          mkdir -p ~/.m2
+          echo "<settings>
+          <servers>
+            <server>
+              <id>github</id>
+              <username>${{ secrets.GITHUB_ACTOR }}</username>
+              <password>${{ secrets.GITHUB_TOKEN }}</password>
+            </server>
+          </servers>
+          </settings>" > ~/.m2/settings.xml
+
       # Install Docker Compose as a CLI plugin
       - name: Install Docker Compose Plugin
         run: |
