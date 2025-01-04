@@ -18,20 +18,18 @@ jobs:
         uses: actions/checkout@v3
 
       # Configure Maven for GitHub Packages
-      - name: Configure Maven with GitHub Packages
+      - name: Configure Maven Settings
         run: |
           mkdir -p ~/.m2
-          echo "<settings xmlns=\"http://maven.apache.org/SETTINGS/1.0.0\"
-                  xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"
-                  xsi:schemaLocation=\"http://maven.apache.org/SETTINGS/1.0.0 https://maven.apache.org/xsd/settings-1.0.0.xsd\">
-                  <servers>
-                    <server>
-                      <id>github</id>
-                      <username>${{ secrets.USERNAME }}</username>
-                      <password>${{ secrets.PAT }}</password>
-                    </server>
-                  </servers>
-                </settings>" > ~/.m2/settings.xml
+          echo "<settings>
+          <servers>
+            <server>
+              <id>github</id>
+              <username>ku4marez</username>
+              <password>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</password>
+            </server>
+          </servers>
+          </settings>" > ~/.m2/settings.xml
 
       # Install Docker Compose as a CLI plugin
       - name: Install Docker Compose Plugin
