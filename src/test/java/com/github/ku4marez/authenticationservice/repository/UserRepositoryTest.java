@@ -2,7 +2,7 @@ package com.github.ku4marez.authenticationservice.repository;
 
 import com.github.ku4marez.authenticationservice.entity.UserEntity;
 import com.github.ku4marez.authenticationservice.util.CreateEntityUtil;
-import com.github.ku4marez.commonlibraries.entity.enums.Role;
+import com.github.ku4marez.commonlibraries.entity.entity.enums.Role;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

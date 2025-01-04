@@ -2,7 +2,7 @@ package com.github.ku4marez.authenticationservice.util;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.ku4marez.commonlibraries.entity.dto.UserDTO;
-import com.github.ku4marez.commonlibraries.entity.enums.Role;
+import com.github.ku4marez.commonlibraries.entity.entity.enums.Role;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

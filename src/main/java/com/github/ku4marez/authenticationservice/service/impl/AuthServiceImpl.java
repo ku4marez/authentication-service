@@ -6,7 +6,7 @@ import com.github.ku4marez.authenticationservice.service.AuthService;
 import com.github.ku4marez.authenticationservice.service.UserDetailsServiceImpl;
 import com.github.ku4marez.authenticationservice.util.JwtUtil;
 import com.github.ku4marez.commonlibraries.entity.dto.response.AuthResponse;
-import com.github.ku4marez.commonlibraries.entity.enums.Role;
+import com.github.ku4marez.commonlibraries.entity.entity.enums.Role;
 import com.github.ku4marez.commonlibraries.entity.exception.RefreshTokenException;
 import com.github.ku4marez.commonlibraries.entity.exception.UserAlreadyExistsException;
 import org.springframework.security.authentication.AuthenticationManager;
