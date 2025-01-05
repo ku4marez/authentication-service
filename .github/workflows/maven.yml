@@ -26,7 +26,7 @@ jobs:
             <server>
               <id>github</id>
               <username>ku4marez</username>
-              <password>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</password>
+              <password>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</password>
             </server>
           </servers>
           </settings>" > ~/.m2/settings.xml
