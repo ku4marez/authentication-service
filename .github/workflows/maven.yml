@@ -17,22 +17,13 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # Configure Maven for GitHub Packages
-      - name: Configure Maven Settings
-        env:
-          GITHUB_ACTOR: ${{ secrets.USERNAME }}
-          GITHUB_TOKEN: ${{ secrets.PAT }}
-        run: |
-          mkdir -p ~/.m2
-          echo "<settings>
-          <servers>
-            <server>
-              <id>github</id>
-              <username>$GITHUB_ACTOR</username>
-              <password>$GITHUB_TOKEN</password>
-            </server>
-          </servers>
-          </settings>" > ~/.m2/settings.xml
+      # Set up JDK 21
+      - name: Set up JDK 21
+        uses: actions/setup-java@v3
+        with:
+          java-version: 21
+          distribution: 'temurin'
+          cache: maven
 
       # Install Docker Compose as a CLI plugin
       - name: Install Docker Compose Plugin
@@ -56,23 +47,19 @@ jobs:
       - name: Start MongoDB with Docker Compose
         run: docker compose -f src/test/resources/docker-compose.yml up -d
 
-      # Set up Java for the service
-      - name: Set up JDK 21
-        uses: actions/setup-java@v3
-        with:
-          java-version: 21
-          distribution: 'temurin'
-          cache: maven
+      # Run Maven Build
+      - name: Build and Package Application
+        run: mvn -s $GITHUB_WORKSPACE/.github/workflows/settings.xml clean package -DskipTests
+        env:
+          USER_NAME: ${{ secrets.USER_NAME }}
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
 
-      - name: Debug Maven Settings
-        run: cat ~/.m2/settings.xml
-
-      - name: Resolve Dependencies
-        run: mvn dependency:resolve -X
-
-      # Run Tests
+      # Run Maven Tests
       - name: Run Tests
-        run: mvn test -X
+        run: mvn -s $GITHUB_WORKSPACE/.github/workflows/settings.xml test
+        env:
+          USER_NAME: ${{ secrets.USER_NAME }}
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
 
       # Tear down Docker Compose
       - name: Tear Down MongoDB
