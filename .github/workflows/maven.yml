@@ -25,8 +25,8 @@ jobs:
           <servers>
             <server>
               <id>github</id>
-              <username>ku4marez</username>
-              <password>${{ secrets.PAT }}</password>
+              <username>${{ github.actor }}</username>
+              <password>${{ secrets.GITHUB_TOKEN }}</password>
             </server>
           </servers>
           </settings>" > ~/.m2/settings.xml
@@ -63,7 +63,7 @@ jobs:
 
       # Run Tests
       - name: Run Tests
-        run: mvn test
+        run: mvn test -X
 
       # Tear down Docker Compose
       - name: Tear Down MongoDB
