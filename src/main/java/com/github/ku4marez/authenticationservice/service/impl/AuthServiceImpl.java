@@ -4,16 +4,19 @@ import com.github.ku4marez.authenticationservice.entity.UserEntity;
 import com.github.ku4marez.authenticationservice.repository.UserRepository;
 import com.github.ku4marez.authenticationservice.service.AuthService;
 import com.github.ku4marez.authenticationservice.service.UserDetailsServiceImpl;
-import com.github.ku4marez.authenticationservice.util.JwtUtil;
 import com.github.ku4marez.commonlibraries.entity.dto.response.AuthResponse;
 import com.github.ku4marez.commonlibraries.entity.entity.enums.Role;
 import com.github.ku4marez.commonlibraries.entity.exception.RefreshTokenException;
 import com.github.ku4marez.commonlibraries.entity.exception.UserAlreadyExistsException;
+import com.github.ku4marez.commonlibraries.entity.util.JwtUtil;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.security.core.GrantedAuthority;
+
+import java.util.List;
 
 @Service
 public class AuthServiceImpl implements AuthService {
@@ -53,9 +56,12 @@ public class AuthServiceImpl implements AuthService {
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
 
         UserDetails userDetails = userDetailsService.loadUserByUsername(username);
+        List<String> roles = userDetails.getAuthorities().stream()
+                .map(GrantedAuthority::getAuthority)
+                .toList();
 
         // Generate tokens
-        String accessToken = jwtUtil.generateToken(userDetails.getUsername());
+        String accessToken = jwtUtil.generateToken(userDetails.getUsername(), roles);
         String refreshToken = jwtUtil.generateRefreshToken(userDetails.getUsername());
 
         return new AuthResponse(accessToken, refreshToken);
@@ -67,9 +73,11 @@ public class AuthServiceImpl implements AuthService {
         if (!jwtUtil.isTokenValid(refreshToken, username)) {
             throw new RefreshTokenException();
         }
+        UserDetails userDetails = userDetailsService.loadUserByUsername(username);
+        List<String> roles = userDetails.getAuthorities().stream()
+                .map(GrantedAuthority::getAuthority)
+                .toList();
 
-        return jwtUtil.generateToken(username);
+        return jwtUtil.generateToken(username, roles);
     }
 }
-
-

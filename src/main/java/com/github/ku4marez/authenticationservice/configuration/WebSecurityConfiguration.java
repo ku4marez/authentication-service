@@ -1,8 +1,10 @@
 package com.github.ku4marez.authenticationservice.configuration;
 
 import com.github.ku4marez.authenticationservice.service.UserDetailsServiceImpl;
-import com.github.ku4marez.authenticationservice.util.JwtUtil;
+import com.github.ku4marez.commonlibraries.entity.util.CorsConfigurationUtil;
+import com.github.ku4marez.commonlibraries.entity.util.JwtUtil;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -17,14 +19,21 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 @RequiredArgsConstructor
 public class WebSecurityConfiguration {
 
-    private final JwtUtil jwtUtil;
+    @Value("${jwt.secret}")
+    private String secretKey;
+
+    @Value("${jwt.expiration-time}")
+    private long accessTokenExpirationTime;
+
+    @Value("${jwt.refresh-token-expiration-time}")
+    private long refreshTokenExpirationTime;
+
     private final UserDetailsServiceImpl userDetailsService;
 
     @Bean
@@ -49,21 +58,17 @@ public class WebSecurityConfiguration {
 
     @Bean
     public WebMvcConfigurer corsConfigurer() {
-        return new WebMvcConfigurer() {
-            @Override
-            public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/**") // Allow all endpoints
-                        .allowedOrigins("http://localhost:3000") // Adjust to match your frontend URL
-                        .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
-                        .allowedHeaders("*")
-                        .allowCredentials(true);
-            }
-        };
+        return CorsConfigurationUtil.corsConfigurer("http://localhost:3000");
     }
 
     @Bean
     public JwtFilter jwtFilter() {
-        return new JwtFilter(jwtUtil, userDetailsService);
+        return new JwtFilter(jwtUtil(), userDetailsService);
+    }
+
+    @Bean
+    public JwtUtil jwtUtil() {
+        return new JwtUtil(secretKey, accessTokenExpirationTime, refreshTokenExpirationTime);
     }
 
     @Bean
