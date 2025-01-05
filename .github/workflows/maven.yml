@@ -25,8 +25,8 @@ jobs:
           <servers>
             <server>
               <id>github</id>
-              <username>${{ secrets.USERNAME }}</username>
-              <password>${{ secrets.PAT }}</password>
+              <username>ku4marez</username>
+              <password>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</password>
             </server>
           </servers>
           </settings>" > ~/.m2/settings.xml
