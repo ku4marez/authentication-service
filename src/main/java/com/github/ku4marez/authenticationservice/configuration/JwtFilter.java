@@ -1,7 +1,7 @@
 package com.github.ku4marez.authenticationservice.configuration;
 
 import com.github.ku4marez.authenticationservice.service.UserDetailsServiceImpl;
-import com.github.ku4marez.commonlibraries.entity.util.JwtUtil;
+import com.github.ku4marez.commonlibraries.util.JwtUtil;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

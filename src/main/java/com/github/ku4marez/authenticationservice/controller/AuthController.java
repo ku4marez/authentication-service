@@ -1,9 +1,9 @@
 package com.github.ku4marez.authenticationservice.controller;
 
 import com.github.ku4marez.authenticationservice.service.AuthService;
-import com.github.ku4marez.commonlibraries.entity.dto.request.AuthRequest;
-import com.github.ku4marez.commonlibraries.entity.dto.request.RefreshTokenRequest;
-import com.github.ku4marez.commonlibraries.entity.dto.response.AuthResponse;
+import com.github.ku4marez.commonlibraries.dto.request.AuthRequest;
+import com.github.ku4marez.commonlibraries.dto.request.RefreshTokenRequest;
+import com.github.ku4marez.commonlibraries.dto.response.AuthResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

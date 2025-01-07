@@ -1,6 +1,6 @@
 package com.github.ku4marez.authenticationservice.service;
 
-import com.github.ku4marez.commonlibraries.entity.dto.response.AuthResponse;
+import com.github.ku4marez.commonlibraries.dto.response.AuthResponse;
 
 public interface AuthService {
     void register(String username, String password);

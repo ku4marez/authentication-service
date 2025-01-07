@@ -1,6 +1,6 @@
 package com.github.ku4marez.authenticationservice.service;
 
-import com.github.ku4marez.commonlibraries.entity.dto.UserDTO;
+import com.github.ku4marez.commonlibraries.dto.UserDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 

@@ -4,7 +4,7 @@ import com.github.ku4marez.authenticationservice.constant.TestConstants;
 import com.github.ku4marez.authenticationservice.constant.UserRole;
 import com.github.ku4marez.authenticationservice.service.UserService;
 import com.github.ku4marez.authenticationservice.util.CreateEntityUtil;
-import com.github.ku4marez.commonlibraries.entity.dto.UserDTO;
+import com.github.ku4marez.commonlibraries.dto.UserDTO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;

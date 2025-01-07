@@ -1,7 +1,7 @@
 package com.github.ku4marez.authenticationservice.controller;
 
 import com.github.ku4marez.authenticationservice.service.UserService;
-import com.github.ku4marez.commonlibraries.entity.dto.UserDTO;
+import com.github.ku4marez.commonlibraries.dto.UserDTO;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

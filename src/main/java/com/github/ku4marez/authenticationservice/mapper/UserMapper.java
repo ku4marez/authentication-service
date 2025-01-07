@@ -1,7 +1,7 @@
 package com.github.ku4marez.authenticationservice.mapper;
 
 import com.github.ku4marez.authenticationservice.entity.UserEntity;
-import com.github.ku4marez.commonlibraries.entity.dto.UserDTO;
+import com.github.ku4marez.commonlibraries.dto.UserDTO;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;
 

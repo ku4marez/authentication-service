@@ -1,7 +1,7 @@
 package com.github.ku4marez.authenticationservice.configuration;
 
 import com.github.ku4marez.authenticationservice.entity.UserEntity;
-import com.github.ku4marez.commonlibraries.entity.entity.enums.Role;
+import com.github.ku4marez.commonlibraries.entity.enums.Role;
 import jakarta.annotation.PostConstruct;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.security.crypto.password.PasswordEncoder;

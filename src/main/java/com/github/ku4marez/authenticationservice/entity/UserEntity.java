@@ -1,7 +1,7 @@
 package com.github.ku4marez.authenticationservice.entity;
 
-import com.github.ku4marez.commonlibraries.entity.entity.common.PersistentAuditedEntity;
-import com.github.ku4marez.commonlibraries.entity.entity.enums.Role;
+import com.github.ku4marez.commonlibraries.entity.common.PersistentAuditedEntity;
+import com.github.ku4marez.commonlibraries.entity.enums.Role;
 import lombok.*;
 import org.springframework.data.mongodb.core.mapping.Document;
 

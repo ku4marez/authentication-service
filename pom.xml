@@ -20,7 +20,7 @@
 		<java.version>21</java.version>
 		<modelmapper.version>3.1.1</modelmapper.version>
 		<mapstruct.version>1.5.5.Final</mapstruct.version>
-		<common.libraries.version>1.0.5</common.libraries.version>
+		<common.libraries.version>1.0.6</common.libraries.version>
 		<springdoc.version>2.2.0</springdoc.version>
 	</properties>
 

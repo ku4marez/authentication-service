@@ -1,8 +1,8 @@
 package com.github.ku4marez.authenticationservice.util;
 
 import com.github.ku4marez.authenticationservice.entity.UserEntity;
-import com.github.ku4marez.commonlibraries.entity.dto.UserDTO;
-import com.github.ku4marez.commonlibraries.entity.entity.enums.Role;
+import com.github.ku4marez.commonlibraries.dto.UserDTO;
+import com.github.ku4marez.commonlibraries.entity.enums.Role;
 
 import java.util.List;
 
