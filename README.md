@@ -30,7 +30,7 @@ The **Authentication Service** is a microservice responsible for user authentica
 
 ### **Backend (Spring Boot + MongoDB)**
 - 🟢 **Java 21**
-- 🟢 **Spring Boot 3.1.4**
+- 🟢 **Spring Boot 3.4.0**
 - 🟢 **Spring Security (JWT Authentication)**
 - 🟢 **Spring Data MongoDB**
 - 🟢 **Lombok**
